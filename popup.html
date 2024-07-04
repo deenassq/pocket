@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pocket-v1</title>
+  <style>
+    /* CSS Code */
+body {
+  font-family: Arial, sans-serif;
+  margin: 10px;
+  padding: 0;
+  width: 300px; /* Ensure the width is consistent */
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.4em;
+  color: #333;
+  border-bottom: 2px solid #ddd; /* Add bottom border to headings */
+  padding-bottom: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9em; /* Slightly smaller font size */
+}
+
+button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9em; /* Slightly smaller font size */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+select {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9em; /* Slightly smaller font size */
+}
+
+.subject, .article {
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between; /* Align delete button to the right */
+  align-items: center;
+  overflow: hidden;
+}
+
+.article {
+  cursor: pointer;
+  white-space: nowrap; /* Ensure the text does not wrap */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Show ellipsis for overflow */
+  display: flex;
+  justify-content: space-between; /* Align delete button to the right */
+  align-items: center;
+  gap: 5px; /* Add some gap between the link and the delete button */
+  overflow-x: auto; /* Allow horizontal scrolling */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #888 #f1f1f1; /* Firefox */
+}
+
+.article::-webkit-scrollbar {
+  height: 6px; /* WebKit - Make scrollbar thinner */
+}
+
+.article::-webkit-scrollbar-track {
+  background: #f1f1f1; /* WebKit */
+}
+
+.article::-webkit-scrollbar-thumb {
+  background: #888; /* WebKit */
+}
+
+.article::-webkit-scrollbar-thumb:hover {
+  background: #555; /* WebKit */
+}
+
+.article a {
+  flex-grow: 1; /* Allow the link to grow */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: inherit; /* Inherit text color */
+  text-decoration: none; /* Remove underline */
+}
+
+.article a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.delete-button {
+  margin-left: 10px;
+  color: red;
+  cursor: pointer;
+  font-size: 0.8em; /* Smaller font size for delete button */
+  flex-shrink: 0; /* Ensure the delete button does not shrink */
+}
+
+.title {
+  font-weight: bold;
+  color: #000000; /* Make subject titles blue */
+}
+
+/* New colors for the articles */
+.article.read {
+  background-color: #d4edda; /* Light green */
+}
+
+.article.unread {
+  background-color: #f8d7da; /* Light red */
+}
+
+
+  </style>
+</head>
+<body>
+  <h2>Pocket</h2>
+  <div class="container">
+    <div class="input-group">
+      <input type="text" id="newSubjectInput" placeholder="New Subject">
+      <button id="addSubject">Add</button>
+    </div>
+    <div id="subjects"></div>
+  </div>
+  
+  <hr>
+  
+  <h2>Articles</h2>
+  <div class="container">
+    <select id="subjectSelect"></select>
+    <div class="input-group">
+      <input type="text" id="newArticleInput" placeholder="New Article URL">
+      <button id="addArticle">Add</button>
+    </div>
+    <div id="articles"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

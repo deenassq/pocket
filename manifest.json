@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Pocket-v1",
+  "version": "1.0",
+  "description": "Organize and track your reading progress across various subjects.",
+  "permissions": ["storage", "activeTab", "tabs", "unlimitedStorage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "image.png"
+  },
+  "externally_connectable": {
+    "matches": ["*://*/*"]
+  }
+}
