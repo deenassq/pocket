@@ -60,6 +60,15 @@ document.addEventListener('DOMContentLoaded', function() {
       articleLink.textContent = article.url;
       articleLink.target = '_blank'; // Open link in a new tab
 
+      const toggleReadButton = document.createElement('button');
+      toggleReadButton.className = 'toggle-read-button';
+      toggleReadButton.textContent = article.read === 1 ? 'Unread' : 'Read';
+      toggleReadButton.onclick = function() {
+        article.read = article.read === 1 ? 2 : 1;
+        saveSubjects();
+        displayArticles(subjectName);
+      };
+
       const deleteButton = document.createElement('span');
       deleteButton.className = 'delete-button';
       deleteButton.textContent = 'Delete';
@@ -70,23 +79,11 @@ document.addEventListener('DOMContentLoaded', function() {
       };
 
       articleDiv.appendChild(articleLink);
+      articleDiv.appendChild(toggleReadButton);
       articleDiv.appendChild(deleteButton);
       articlesContainer.appendChild(articleDiv);
-
-      articleDiv.addEventListener('click', function() {
-        article.read = article.read === 1 ? 2 : 1;
-        saveSubjects();
-        displayArticles(subjectName);
-      });
-
-      articleDiv.addEventListener('dblclick', function() {
-        article.read = 2;
-        saveSubjects();
-        displayArticles(subjectName);
-      });
     });
   }
-
   addSubjectButton.onclick = function() {
     const newSubject = newSubjectInput.value.trim();
     if (newSubject && !subjects[newSubject]) {
